@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart</title>
+</head>
+<body>
+    <h1>My cart</h1>
+
+    <% cartItems.forEach(item=> { %>
+  <img src="/uploads/<%= item.product.image %>" class="card-img-top"style="height:150px; object-fit:cover;" alt="<%= item.product.name%>"width="150">
+        <h3><%=item.product.name%></h3>
+        <p>Price<%= item.product.price %></p>
+        <p>Quantity:<%= item.quantity %></p>
+        <span><form action="cart/increase/<%=item._id%>"method="POST">
+            <button type="submit">+</button>
+        </form></span>
+        <form action="/cart/remove/<%=item ._id %>" method="POST">
+  <button type="submit">Remove</button>
+</form>
+
+     <hr>
+    <% }) %>
+</body>
+</html>

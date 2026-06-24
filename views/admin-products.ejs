@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Manange Products</h1>
+    <a href="/admin/products/new">Add product</a>
+    <% products.forEach(product => { %>
+     
+  
+    <div>
+        <h1><%= product.name %></h1>
+    <p>Price:<%= product.price %></p>
+    <p><%= product.description %></p>
+    <img src="/uploads/<%= product.image %>"alt="<%= product.name %>" width="200"/>
+    <br>
+    <a href="/admin/products/edit/<%= product._id %>">Edit</a>
+    <br>
+    <form action="/admin/products/delete/<%= product._id %>" method="POST">
+    <button type="submit">Delete</button>
+    </form>
+        </div>
+          <% }) %>
+</body>
+</html>

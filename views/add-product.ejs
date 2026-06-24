@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add product</title>
+</head>
+<body>
+    <h1>Add product</h1>
+    <form action="/admin/products/new" method="POST" enctype="multipart/form-data">
+        <input type="text" name="name"placeholder="Product-name"required>
+        <br><br>
+        <input type="number" name="price"placeholder="Product-price"required>
+        <br><br>
+        <textarea
+        name="description"
+        placeholder="Add-description"
+
+        ></textarea>
+        <br><br>
+        <input type="file"name="image"accept="image/*">
+
+        <select name="category">
+            <option value="Mobile">Mobile
+                </option>
+                <option value="Laptop">Laptop
+                </option>
+                <option value="Accessory">Accessory
+                </option>
+
+
+        </select>
+        </select>
+        <button type="submit">Add Product</button>
+
+    </form>
+</body>
+</html>
