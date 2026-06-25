@@ -22,8 +22,13 @@ const addtoCart=async (req,res)=>{
 const getCart=async (req,res)=>{
     try{
         const cartItems=await Cart.find().populate("product")
+        let grandTotal=0;
+        cartItems.forEach((item)=>{
+            grandTotal+=item.product.price*item.quantity
+
+        })
         console.log(cartItems)
-        res.render("cart",{cartItems})
+        res.render("cart",{cartItems,grandTotal})
     }
     catch(error){
         res.send(error.message)
@@ -50,9 +55,9 @@ const removeCart=async(req,res)=>{
 const increaseQuantity=async (req,res)=>{
     try{
         const cartItem=await Cart.findById(req.params.id)
-        carItem.quantity+=1
-        console.log( "the quantity",{cartItem})
-        await carItem.save()
+        cartItem.quantity+=1
+        // console.log( "the quantity",{cartItem})
+        await cartItem.save()
         res.redirect("/cart")
 
 
@@ -65,10 +70,32 @@ const increaseQuantity=async (req,res)=>{
 
 }
 
+
+const decreaseQuantity=async (req,res)=>{
+    try{
+        const cartItem=await Cart.findById(req.params.id)
+        if(cartItem.quantity>1){
+        cartItem.quantity-=1
+        await cartItem.save()
+        }
+        // console.log( "the quantity",{cartItem})
+        
+        res.redirect("/cart")
+
+
+
+    }
+    catch(error){
+        res.send(error.message)
+
+    }
+
+}
 module.exports={
     addtoCart,
     getCart,
     removeCart,
     increaseQuantity,
+    decreaseQuantity
 
 }
