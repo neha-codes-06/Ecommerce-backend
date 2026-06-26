@@ -2,6 +2,7 @@ const Cart=require("../models/cart.model")
 const addtoCart=async (req,res)=>{
     const productId=req.params.id
     const existingItem=await Cart.findOne({
+        user:req.user.userId,
         product:productId
     })
    if(existingItem){
@@ -10,6 +11,7 @@ const addtoCart=async (req,res)=>{
 
    }else{
     await Cart.create({
+        user:req.user.userId,
         product:productId,
         quantity:1,
 
@@ -21,7 +23,7 @@ const addtoCart=async (req,res)=>{
 
 const getCart=async (req,res)=>{
     try{
-        const cartItems=await Cart.find().populate("product")
+        const cartItems=await Cart.find({user:req.user.userId}).populate("product")
         let grandTotal=0;
         cartItems.forEach((item)=>{
             grandTotal+=item.product.price*item.quantity
