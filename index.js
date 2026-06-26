@@ -1,14 +1,17 @@
 const express=require("express")
+const cookieParser=require("cookie-parser")
 const dotenv=require("dotenv")
 const connectToMongodB=require("./config/db")
 
 const app=express()
 dotenv.config()
 connectToMongodB()
-const authRoutes=require("./routes/auth.routes")
-app.use("/",authRoutes)
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
+app.use(cookieParser());
+const authRoutes=require("./routes/auth.routes")
+app.use("/",authRoutes)
+
 const upload=require("./middleware/upload")
 app.use("/uploads",express.static("uploads"));
 app.set("view engine","ejs")

@@ -38,7 +38,12 @@
     <br><br>
     </form>
 
-  
+    
+  <form action="/auth/logout" method="POST">
+    <button type="submit" class="btn btn-danger">Logout</button>
+
+  </form>
+  <br><br>
 <div style="display: flex;justify-content:space-between;align-items:center;flex-wrap:wrap; gap:20px">
     <% products.forEach(product=> { %>
             <div class="card" style="width: 18rem; min-height:100px;">
