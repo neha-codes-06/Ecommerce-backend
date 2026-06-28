@@ -1,5 +1,9 @@
 const Product=require("../models/product.model")
 
+const home=async (req,res)=>{
+    const products=await Product.find()
+    res.render("home",{products})
+}
 const createProductfromForm=async(req,res)=>{
     try{
         const product=await Product.create({
@@ -199,6 +203,7 @@ const renderProductDetails=async(req,res)=>{
 }
 
 module.exports={
+     home,
     createProductfromForm,
     getAdminProducts,
     editPagebyId,
