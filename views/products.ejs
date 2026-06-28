@@ -8,6 +8,11 @@
 
 </head>
 <body>
+  
+ <nav class="navbar" style="background-color: #e3f2fd;" data-bs-theme="light">
+
+
+
     <h1>All Products</h1>
 <form action="/products" method="GET">
     <input type="text"name="search"placeholder="Search Product" value="<%= search||"" %>">
@@ -43,6 +48,7 @@
     <button type="submit" class="btn btn-danger">Logout</button>
 
   </form>
+ </nav>
   <br><br>
 <div style="display: flex;justify-content:space-between;align-items:center;flex-wrap:wrap; gap:20px">
     <% products.forEach(product=> { %>
