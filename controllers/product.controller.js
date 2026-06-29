@@ -4,6 +4,7 @@ const home=async (req,res)=>{
     const products=await Product.find()
     res.render("home",{products})
 }
+
 const createProductfromForm=async(req,res)=>{
     try{
         const product=await Product.create({
