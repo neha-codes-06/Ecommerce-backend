@@ -8,7 +8,7 @@
 </head>
 <body class="p-3 mb-2 bg-danger-subtle text-danger-emphasis">
     <h1>My orders</h1>
-    
+    <a  class="link-danger link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"href="/cart">Back to cart</a>
 <% if (orders.length===0) { %>
     <h3>No orders found</h3>
  
@@ -31,12 +31,12 @@
         </form>
      
     <% }else if(order.status==="Paid") {%>
-        <p>Paid</p>
+        
 
 
 
         <%}else{%>
-<p>Cancelled</p>
+
         <%}%>
     
         <h4>Products:</h4>
