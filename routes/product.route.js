@@ -3,6 +3,7 @@ const router=express.Router()
 const isLoggedIn=require("../middleware/auth.middleware")
 const upload=require("../middleware/upload")
 const {home,createProductfromForm,getAdminProducts,editPagebyId,createProduct,getAllProducts,getProductbyId,updateProduct,deleteProduct,renderProductsPage, renderProductDetails}=require("../controllers/product.controller")
+
 router.get("/",home)
 router.get("/admin/products",getAdminProducts)
 router.post("/admin/products/new",upload.single("image"),createProductfromForm)
@@ -11,10 +12,10 @@ router.post("/admin/products/edit/:id",updateProduct)
 router.post("/admin/products/delete/:id",deleteProduct)
 router.get("/products",isLoggedIn,renderProductsPage)
 router.get("/products/:id",renderProductDetails)
-
+router.get("show/products",getAllProducts)
 
 router.post("/products",createProduct)
-router.get("/products",getAllProducts)
+
 router.get("/products/:id",getProductbyId)
 
 
